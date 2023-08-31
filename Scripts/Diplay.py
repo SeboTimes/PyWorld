@@ -6,8 +6,8 @@ class Display(object):
         self.surface = pygame.display.set_mode(resulution)
         pygame.display.flip()
 
-    def resulution(self, resulution: tuple):
-        self.surface = pygame.display.set_mode(resulution)
+    def resolution(self, resolution: tuple):
+        self.surface = pygame.display.set_mode(resolution)
         pygame.display.flip()
 
     def caption(self, caption: str):
@@ -21,4 +21,4 @@ class Display(object):
         self.surface.fill(color)
     
     def render(self, entity: Entity):
-        self.surface.blit(entity.surface, (entity.x, entity.y))
+        self.surface.blit(entity._surface, (entity.x, entity.y))

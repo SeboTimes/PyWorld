@@ -39,11 +39,14 @@ while running:
   screen.render(car)
   screen.render(bomb)
 
-  if bomb.y == height - bomb.getSize()[1]:
+  if bomb.y > height - bomb.getSize()[1]:
     bomb.y = -bomb.getSize()[1]
     bomb.x = randint(0, width - car.getSize()[0])
   else:
-    bomb.y += 4
+    bomb.y += speed / 2
+
+  if car.isTouching(bomb):
+    screen.fill((255, 0, 0)) 
 
   screen.update()
   clock.tick(60)
