@@ -33,7 +33,7 @@ while running:
   if keys[pygame.K_LEFT] and x > 0:
     x -= vel
   
-  if keys[pygame.K_RIGHT] and x < 800 - 270: #270 ist  die länge des autos
+  if keys[pygame.K_RIGHT] and x < resulution[0] - 270: #270 ist  die länge des autos
     x += vel
     
   screen.fill(black)
