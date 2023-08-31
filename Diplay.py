@@ -10,5 +10,9 @@ class Display:
         background_colour = (255,255,255)
         screen.fill(background_colour)
 
-    def resulution():
-        pass
+    def resulution(width, height):
+        screen = pygame.display.set_mode((width, height))
+        pygame.display.flip()
+
+    def update():
+        pygame.display.update()
