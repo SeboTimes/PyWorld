@@ -8,8 +8,9 @@ class Entity:
         self.x = 0
         self.y = 0
 
-    def resize(self, size: tuple):
+    def resize(self, size: tuple) -> Self:
         self._surface = pygame.transform.scale(self._surface, size)
+        return self
 
     def getSize(self) -> tuple:
         return self._surface.get_size()
