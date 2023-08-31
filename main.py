@@ -1,30 +1,27 @@
+from Diplay import Display
 import pygame
 
 black = (0,0,0)
 white = (255,255,255)
 (width, height) = (800, 600)
 
-
-screen = pygame.display.set_mode((width, height))
-pygame.display.flip()
-pygame.display.set_caption('Sebo hatn')
+screen = Display(width, height)
+screen.caption("PyWorld")
 clock = pygame.time.Clock()
 
 carImg = pygame.image.load("auto.jpeg")
-backGroundImg = pygame.image.load("Hintergrund.jpg").convert()
+backGroundImg = pygame.image.load("Hintergrund.jpg")
+backGroundImg = pygame.transform.scale(backGroundImg, (width, height))
 enemyImg = pygame.image.load("Gegner.jpg")
 
-screen.blit(backGroundImg, (0,0))
-
 def car(x,y):
-  screen.blit(carImg,(x,y))
+  screen.render(carImg, x, y)
 
 vel = 10
 
-x = (width * 0.45)
-y = (height * 0.8)
+x = (width * 0.5)
+y = (height * 0.5)
 
-pygame.display.flip()
 running = True
 while running:
   for event in pygame.event.get():
@@ -40,9 +37,9 @@ while running:
     x += vel
     
   screen.fill(black)
+  screen.render(backGroundImg, 0, 0)
 
   car(x, y)
   pygame.display.update()
-  screen.blit(carImg,(x,y))
-  car(x,y)
+  screen.render(carImg, x, y)
   clock.tick(60)
