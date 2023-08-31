@@ -20,5 +20,5 @@ class Display(object):
     def fill(self, color: tuple):
         self.surface.fill(color)
     
-    def render(self, entity: Entity, pos: tuple):
-        self.surface.blit(entity.surface, pos)
+    def render(self, entity: Entity):
+        self.surface.blit(entity.surface, (entity.x, entity.y))

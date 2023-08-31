@@ -1,5 +1,6 @@
 from Scripts.Diplay import Display
 from Scripts.Entity import Entity
+from random import randint
 import pygame
 
 width, height = 800, 600
@@ -13,8 +14,10 @@ bomb = Entity("Images/Gegner.jpg")
 bg = Entity("Images/Hintergrund.jpg")
 bg.resize((width, height))
 
-x = (width - car.getSize()[0]) / 2
-y = (height - car.getSize()[1])
+car.x = (width - car.getSize()[0]) / 2
+car.y = (height - car.getSize()[1])
+
+bomb.y = bomb.getSize()[1]
 
 speed = 10
 
@@ -26,14 +29,21 @@ while running:
     
   keys  = pygame.key.get_pressed()
 
-  if keys[pygame.K_LEFT] and x > 0:
-    x -= vel
+  if keys[pygame.K_LEFT] and car.x > 0:
+    car.x -= speed
   
-  if keys[pygame.K_RIGHT] and x < width - 270: #270 ist  die länge des autos
-    x += vel
+  if keys[pygame.K_RIGHT] and car.x < width - 270: #270 ist  die länge des autos
+    car.x += speed
 
-  screen.render(bg, (0, 0))
+  screen.render(bg)
+  screen.render(car)
+  screen.render(bomb)
 
-  screen.render(car, (x, y))
+  if bomb.y == height - bomb.getSize()[1]:
+    bomb.y = -bomb.getSize()[1]
+    bomb.x = randint(0, width - car.getSize()[0])
+  else:
+    bomb.y += 4
+
   screen.update()
   clock.tick(60)
