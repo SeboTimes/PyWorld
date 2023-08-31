@@ -15,7 +15,7 @@ backGroundImg = pygame.transform.scale(backGroundImg, resulution)
 enemyImg = pygame.image.load("Gegner.jpg")
 
 def car(x, y):
-  screen.render(carImg, x, y)
+  screen.render(carImg, (x, y))
 
 vel = 10
 
@@ -37,9 +37,9 @@ while running:
     x += vel
     
   screen.fill(black)
-  screen.render(backGroundImg, 0, 0)
+  screen.render(backGroundImg, (0, 0))
 
   car(x, y)
   pygame.display.update()
-  screen.render(carImg, x, y)
+  screen.render(carImg, (x, y))
   clock.tick(60)
