@@ -1,7 +1,7 @@
 from Scripts.Entity import Entity
 import pygame
 
-class Display(object):
+class Display:
     def __init__(self, resulution: tuple):
         self.surface = pygame.display.set_mode(resulution)
         pygame.display.flip()
