@@ -2,8 +2,6 @@ from Scripts.Diplay import Display
 from Scripts.Entity import Entity
 import pygame
 
-black = (0,0,0)
-white = (255,255,255)
 width, height = 800, 600
 
 screen = Display((width, height))
@@ -15,10 +13,10 @@ bomb = Entity("Images/Gegner.jpg")
 bg = Entity("Images/Hintergrund.jpg")
 bg.resize((width, height))
 
-vel = 10
-
 x = (width - car.getSize()[0]) / 2
 y = (height - car.getSize()[1])
+
+speed = 10
 
 running = True
 while running:
