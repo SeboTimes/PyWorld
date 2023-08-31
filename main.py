@@ -1,4 +1,5 @@
 from Scripts.Diplay import Display
+from Scripts.Entity import Entity
 import pygame
 
 black = (0,0,0)
@@ -9,10 +10,10 @@ screen = Display(resulution)
 screen.caption("PyWorld")
 clock = pygame.time.Clock()
 
-carImg = pygame.image.load("Images/auto.jpeg")
-backGroundImg = pygame.image.load("Images/Hintergrund.jpg")
-backGroundImg = pygame.transform.scale(backGroundImg, resulution)
-enemyImg = pygame.image.load("Images/Gegner.jpg")
+carImg = Entity("Images/auto.jpeg")
+backGroundImg = Entity("Images/Hintergrund.jpg")
+backGroundImg.resize(resulution)
+enemyImg = Entity("Images/Gegner.jpg")
 
 def car(x, y):
   screen.render(carImg, (x, y))
@@ -40,6 +41,5 @@ while running:
   screen.render(backGroundImg, (0, 0))
 
   car(x, y)
-  pygame.display.update()
-  screen.render(carImg, (x, y))
+  screen.update()
   clock.tick(60)

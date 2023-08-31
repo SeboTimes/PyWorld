@@ -1,14 +1,13 @@
+from Scripts.Entity import Entity
 import pygame
 
-class Display:
-    screen: pygame.Surface
-
+class Display(object):
     def __init__(self, resulution: tuple):
-        self.screen = pygame.display.set_mode(resulution)
+        self.surface = pygame.display.set_mode(resulution)
         pygame.display.flip()
 
     def resulution(self, resulution: tuple):
-        self.screen = pygame.display.set_mode(resulution)
+        self.surface = pygame.display.set_mode(resulution)
         pygame.display.flip()
 
     def caption(self, caption: str):
@@ -19,7 +18,7 @@ class Display:
         pygame.display.update()
     
     def fill(self, color: tuple):
-        self.screen.fill(color)
+        self.surface.fill(color)
     
-    def render(self, entity: pygame.Surface, size: tuple):
-        self.screen.blit(entity, size)
+    def render(self, entity: Entity, pos: tuple):
+        self.surface.blit(entity.surface, pos)
