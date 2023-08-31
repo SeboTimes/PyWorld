@@ -3,12 +3,15 @@ import pygame
 
 class Display:
     def __init__(self, resulution: tuple):
-        self.surface = pygame.display.set_mode(resulution)
+        self._surface = pygame.display.set_mode(resulution, pygame.RESIZABLE)
         pygame.display.flip()
 
-    def resolution(self, resolution: tuple):
-        self.surface = pygame.display.set_mode(resolution)
+    def setResolution(self, resolution: tuple):
+        self._surface = pygame.display.set_mode(resolution, pygame.RESIZABLE)
         pygame.display.flip()
+    
+    def getResolution(self) -> tuple:
+        return self._surface.get_size()
 
     def caption(self, caption: str):
         pygame.display.set_caption(caption)
@@ -18,7 +21,7 @@ class Display:
         pygame.display.update()
     
     def fill(self, color: tuple):
-        self.surface.fill(color)
+        self._surface.fill(color)
     
     def render(self, entity: Entity):
-        self.surface.blit(entity._surface, (entity.x, entity.y))
+        self._surface.blit(entity._surface, (entity.x, entity.y))
