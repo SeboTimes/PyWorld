@@ -3,24 +3,24 @@ import pygame
 
 black = (0,0,0)
 white = (255,255,255)
-(width, height) = (800, 600)
+resulution = (800, 600)
 
-screen = Display(width, height)
+screen = Display(resulution)
 screen.caption("PyWorld")
 clock = pygame.time.Clock()
 
 carImg = pygame.image.load("auto.jpeg")
 backGroundImg = pygame.image.load("Hintergrund.jpg")
-backGroundImg = pygame.transform.scale(backGroundImg, (width, height))
+backGroundImg = pygame.transform.scale(backGroundImg, resulution)
 enemyImg = pygame.image.load("Gegner.jpg")
 
-def car(x,y):
+def car(x, y):
   screen.render(carImg, x, y)
 
 vel = 10
 
-x = (width * 0.5)
-y = (height * 0.5)
+x = (resulution[0] * 0.5)
+y = (resulution[1] * 0.5)
 
 running = True
 while running:
