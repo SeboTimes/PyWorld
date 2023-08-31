@@ -4,24 +4,21 @@ import pygame
 
 black = (0,0,0)
 white = (255,255,255)
-resulution = (800, 600)
+width, height = 800, 600
 
-screen = Display(resulution)
+screen = Display((width, height))
 screen.caption("PyWorld")
 clock = pygame.time.Clock()
 
-carImg = Entity("Images/auto.jpeg")
-backGroundImg = Entity("Images/Hintergrund.jpg")
-backGroundImg.resize(resulution)
-enemyImg = Entity("Images/Gegner.jpg")
-
-def car(x, y):
-  screen.render(carImg, (x, y))
+car = Entity("Images/auto.jpeg")
+bomb = Entity("Images/Gegner.jpg")
+bg = Entity("Images/Hintergrund.jpg")
+bg.resize((width, height))
 
 vel = 10
 
-x = (resulution[0] * 0.5)
-y = (resulution[1] * 0.5)
+x = (width - car.getSize()[0]) / 2
+y = (height - car.getSize()[1])
 
 running = True
 while running:
@@ -34,12 +31,11 @@ while running:
   if keys[pygame.K_LEFT] and x > 0:
     x -= vel
   
-  if keys[pygame.K_RIGHT] and x < resulution[0] - 270: #270 ist  die länge des autos
+  if keys[pygame.K_RIGHT] and x < width - 270: #270 ist  die länge des autos
     x += vel
-    
-  screen.fill(black)
-  screen.render(backGroundImg, (0, 0))
 
-  car(x, y)
+  screen.render(bg, (0, 0))
+
+  screen.render(car, (x, y))
   screen.update()
   clock.tick(60)
